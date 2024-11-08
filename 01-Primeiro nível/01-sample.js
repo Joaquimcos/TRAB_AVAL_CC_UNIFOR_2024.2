@@ -1,11 +1,5 @@
 function h(a) {
-    let b = [];
-    for (let i = 0; i < a.length; i++) {
-        if (a[i] % 2 === 0) {
-            b.push(a[i]);
-        }
-    }
-    return b;
+    return a.filter(num => num % 2 === 0);
 }
 
 let x = [1, 2, 3, 4, 5, 6];

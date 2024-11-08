@@ -1,7 +1,7 @@
 let a = true;
 
 function verAc(u) {
-    if (a && u.isAdmin) {
+    if (a && u.admin) {
         console.log("Acesso permitido ao administrador.");
     } else {
         console.log("Acesso negado.");
