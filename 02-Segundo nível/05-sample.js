@@ -10,17 +10,14 @@ function calcularSalarioFuncionario(horasTrabalhadas, valorHora, cargo) {
         default: 200
     };
     
-    // Calcula o salário base
     const salarioBase = horasTrabalhadas * valorHora;
     
-    // Aplica o bônus de acordo com o cargo
+
     const bonus = bonusPorCargo[cargo] || bonusPorCargo.default;
     const salarioComBonus = salarioBase + bonus;
     
-    // Aplica o desconto fixo
     const salarioComDesconto = salarioComBonus - desconto;
     
-    // Aplica a taxa de imposto dependendo da faixa salarial
     let salarioFinal;
     if (salarioComDesconto > 5000) {
         salarioFinal = salarioComDesconto * (1 - taxa3);
