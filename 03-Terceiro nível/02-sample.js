@@ -1,20 +1,36 @@
-async function buscarEFiltrarPessoas() {
+async function buscarPessoas(url = 'https://swapi.dev/api/people/') {
+    const resposta = await fetch(url);
+    const dados = await resposta.json();
+    return dados;
+}
+
+async function buscarTodasPessoas() {
+    let url = 'https://swapi.dev/api/people/';
+    let todasPessoas = [];
+
+    while (url) {
+        const dados = await buscarPessoas(url);
+        todasPessoas = todasPessoas.concat(dados.results);
+        url = dados.next; // URL da próxima página, se existir
+    }
+
+    return todasPessoas;
+}
+
+async function filtrarPessoasPorLetra(letra) {
     try {
-        const resposta = await fetch('https://swapi.dev/api/people/');
-        const dados = await resposta.json();
+        const todasPessoas = await buscarTodasPessoas();
+        const pessoasComLetra = todasPessoas.filter(pessoa => pessoa.name.startsWith(letra));
 
-        const pessoasComL = dados.results.filter(pessoa => pessoa.name.startsWith('L'));
-
-        console.log('Pessoas cujo nome começa com L:');
-        pessoasComL.forEach(pessoa => {
+        console.log(`Pessoas cujo nome começa com ${letra}:`);
+        pessoasComLetra.forEach(pessoa => {
             console.log(pessoa.name);
         });
 
-        console.log(`Total de pessoas encontradas: ${dados.results.length}`);
-
+        console.log(`Total de pessoas encontradas: ${todasPessoas.length}`);
     } catch (erro) {
         console.error('Erro ao buscar pessoas:', erro);
     }
 }
 
-buscarEFiltrarPessoas();
+filtrarPessoasPorLetra('L');
