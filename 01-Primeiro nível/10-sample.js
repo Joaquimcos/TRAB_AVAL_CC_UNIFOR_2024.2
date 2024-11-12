@@ -1,9 +1,9 @@
-let usuarioObjeto = {
+let usuarioValido = {
     nome: "João",
     idade: 25
 };
 
-let usuarioObjeto2 = {
+let usuarioInvalido = {
     nome: 44,
     idade: "Maria"
 };
@@ -17,8 +17,8 @@ function exibirUsuario(usuario) {
 
 
 try {   
-exibirUsuario(usuarioObjeto);
-exibirUsuario(usuarioObjeto2);
+exibirUsuario(usuarioValido);
+exibirUsuario(usuarioInvalido);
 } catch (error){
     console.log(error.message);
 }
