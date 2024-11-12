@@ -1,9 +1,9 @@
 {
-  "name": "trab_aval_cc_unifor_2024.2",
+  "name": "softwaremiqueias",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint src/* --fix"
   },
   "keywords": [],
   "author": "",
