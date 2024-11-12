@@ -1,10 +1,24 @@
-let usuarioObjeto = {
-    n: "João",
-    i: 25
+let usuarioValido = {
+    nome: "João",
+    idade: 25
 };
 
-function exUsr(o) {
-    console.log(o.n + " tem " + o.i + " anos.");
+let usuarioInvalido = {
+    nome: 44,
+    idade: "Maria"
+};
+
+function exibirUsuario(usuario) {
+    if (typeof usuario.nome !== 'string' || typeof usuario.idade !== 'number') {
+        throw new Error ("Erro: o nome deve ser uma string e a idade um número!")
+    }
+    console.log(usuario.nome + " tem " + usuario.idade + " anos.");
 }
 
-exUsr(usuarioObjeto);
+
+try {   
+exibirUsuario(usuarioValido);
+exibirUsuario(usuarioInvalido);
+} catch (error){
+    console.log(error.message);
+}
