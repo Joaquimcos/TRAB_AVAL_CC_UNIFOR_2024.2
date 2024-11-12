@@ -1,14 +1,15 @@
-async function buscarFilme() {
+async function buscarFilme(id) {
   let resposta;
   let filme;
   try {
-    resposta = await fetch("https://swapi.dev/api/films/1/");
+    resposta = await fetch(`https://swapi.dev/api/films/${id}/`);
     filme = await resposta.json();
-    console.log(filme.titulo.toUpperCase());
+    console.log("filme.title: ", filme.title);
   } catch (error) {
     console.log("error: ", error);
   }
 
 }
 
-buscarFilme();
+const id = 1
+buscarFilme(id);

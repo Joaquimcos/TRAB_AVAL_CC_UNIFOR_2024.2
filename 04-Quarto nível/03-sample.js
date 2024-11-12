@@ -1,7 +1,11 @@
-async function buscarDados() {
-    const dados = '{ "name": "Luke", "idade": 23 }';
-    const personagem = JSON.parse(dados);
-    console.log(personagem.name);
+async function buscarDados(dados) {
+    try {
+        const personagem = JSON.parse(dados);
+        console.log("personagem.name: ", personagem.name, "; personagem.idade: ", personagem.idade);
+    } catch (error) {
+        console.log("erro: ", erro);
+    }
 }
 
-buscarDados();
+const dados = '{ "name": "Luke", "idade": 23 }';
+buscarDados(dados);

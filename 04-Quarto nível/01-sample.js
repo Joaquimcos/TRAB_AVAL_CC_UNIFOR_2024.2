@@ -1,22 +1,26 @@
 function exibirNomePlaneta(planetaName) {
-    const mensagemDiv = document.getElementById("mensagem");
-    mensagemDiv.innerHTML = `
-    <div class="alert alert-success" role="alert">
-    <strong>Nome:</strong> ${planetaName}<br>
-    </div>`;
+    if (typeof document !== 'undefined') {
+        const mensagemDiv = document.getElementById("mensagem");
+        mensagemDiv.innerHTML = `
+            <div class="alert alert-success" role="alert">
+                <strong>Nome:</strong> ${planetaName}<br>
+            </div>`;
+    } else {
+        console.log(`Nome do planeta: ${planetaName}`);
+    }
 }
 
-async function buscarPlaneta() {
+async function buscarPlaneta(id) {
     let resposta;
     let planeta;
     try {
-        resposta = await fetch("https://swapi.dev/api/planets/1/");
+        resposta = await fetch(`https://swapi.dev/api/planets/${id}/`);
         planeta = await resposta.json();
-        console.log(planeta.name);
         exibirNomePlaneta(planeta.name);
     } catch (error) {
         console.log("error: ", error);
     }
 }
 
-buscarPlaneta();
+const id = 1;
+buscarPlaneta(id);
